@@ -12,4 +12,6 @@ class User(Base):
     FirstName = Column(String(100), nullable=False)
     LastName = Column(String(100), nullable=False)
     Email = Column(String(150), unique=True, nullable=False)
-    CreateDate = Column(DateTime(timezone=True), default=dt.datetime.now())
+    CreateDate = Column(
+        DateTime(timezone=True), default=dt.datetime.now(timezone="UTC")
+    )
