@@ -1,8 +1,8 @@
-from time import timezone
-from sqlalchemy import Column, String, Integer, DateTime
+from sqlalchemy import Column, ForeignKey, String, Integer, DateTime
+from sqlalchemy.orm import relationship
 import datetime as dt
 
-from app.database.db import Base
+from ..database.db import Base
 
 
 class Link(Base):
@@ -10,6 +10,10 @@ class Link(Base):
 
     LinkID = Column(Integer, primary_key=True)
     Link = Column(String(255), unique=True, nullable=False)
-    CreateDate = Column(
-        DateTime(timezone=True), default=dt.datetime.now(timezone="UTC")
+    CreateDate = Column(DateTime(timezone=True), default=dt.datetime.utcnow())
+    UserID = Column(
+        Integer, ForeignKey("user.UserID", ondelete="CASCADE"), nullable=False
     )
+    DomainID = Column(Integer, ForeignKey("domain.DomainID"), nullable=True)
+
+    owner = relationship("User", back_populates="links")

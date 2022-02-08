@@ -1,16 +1,11 @@
 from fastapi import FastAPI
 
-from app.models import user
-from app.database.db import engine
-from app.api.endpoint.user import router
+from app.models import link, user
+from app.database.db import engine, Base
+from app.api.endpoint import user
 
 app = FastAPI()
 
-app.include_router(router)
+app.include_router(user.router)
 
-user.Base.metadata.create_all(bind=engine)
-
-
-@app.get("/")
-def hello_world():
-    return "Hello World"
+Base.metadata.create_all(bind=engine)
