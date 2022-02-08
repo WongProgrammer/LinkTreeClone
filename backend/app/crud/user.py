@@ -27,7 +27,7 @@ def get_all_users(db: Session):
 
 def update_user(id: int, request: UpdateUser, db: Session):
     user = db.query(User).filter(User.UserID == id)
-    user.update({"FirstName": request.FirstName}, synchronize_session=False)
+    user.update(request.dict(), synchronize_session=False)
     db.commit()
     updated_user = user.first()
     db.refresh(updated_user)
