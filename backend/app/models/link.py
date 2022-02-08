@@ -14,6 +14,9 @@ class Link(Base):
     UserID = Column(
         Integer, ForeignKey("user.UserID", ondelete="CASCADE"), nullable=False
     )
-    DomainID = Column(Integer, ForeignKey("domain.DomainID"), nullable=True)
+    DomainID = Column(
+        Integer, ForeignKey("domain.DomainID", ondelete="CASCADE"), nullable=True
+    )
 
     owner = relationship("User", back_populates="links")
+    domain = relationship("Domain", back_populates="link")
