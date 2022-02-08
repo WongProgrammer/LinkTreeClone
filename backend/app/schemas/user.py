@@ -37,5 +37,9 @@ class UserOut(UserBase):
         orm_mode = True
 
 
-class DeleteUser(BaseModel):
-    Email: EmailStr
+class UpdateUser(BaseModel):
+    FirstName: str
+    LastName: str
+
+    class Config:
+        orm_mode = True
