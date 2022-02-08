@@ -1,8 +1,9 @@
 from sqlalchemy import Column, Integer, String, DateTime
+from sqlalchemy.orm import relationship
 import datetime as dt
 
 
-from app.database.db import Base
+from ..database.db import Base
 
 
 class User(Base):
@@ -12,6 +13,8 @@ class User(Base):
     FirstName = Column(String(100), nullable=False)
     LastName = Column(String(100), nullable=False)
     Email = Column(String(150), unique=True, nullable=False)
-    CreateDate = Column(
-        DateTime(timezone=True), default=dt.datetime.now(timezone="UTC")
+    CreateDate = Column(DateTime(timezone=True), default=dt.datetime.utcnow())
+
+    links = relationship(
+        "Link", back_populates="owner", cascade="all, delete", passive_deletes=True
     )

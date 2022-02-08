@@ -26,5 +26,16 @@ class ReadUser(BaseModel):
         orm_mode = True
 
 
+class UserIn(BaseModel):
+    Email: EmailStr
+
+
+class UserOut(UserBase):
+    # Needs Links
+
+    class Config:
+        orm_mode = True
+
+
 class DeleteUser(BaseModel):
     Email: EmailStr
