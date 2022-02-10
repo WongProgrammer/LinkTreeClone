@@ -1,13 +1,18 @@
 import React from 'react';
-import { Avatar, Container, SimpleGrid, Text } from '@chakra-ui/react'
+import { Center, Flex, Text } from '@chakra-ui/react'
+import { SocialIcon } from 'react-social-icons'
+
+//this will link to our repo
 function Footer() {
     return (
-        <Container maxW='xl' centerContent>
-            <SimpleGrid columns={2} spacing={2}>
-            <Avatar src='https://user-images.githubusercontent.com/12532733/90986349-ce9c2600-e547-11ea-9fd5-808801bb5a7d.png' />
-            <Text>LinkTree Clone</Text>
-            </SimpleGrid >
-        </Container >
+        <Flex>
+            <Center>
+                <SocialIcon style={{ height: 25, width: 25, marginRight: '1px' }} network="github" />
+            </Center>
+            <Center>
+                <Text fontSize='2xl'>Linktree Clone</Text>
+            </Center>
+        </Flex>
     );
 }
 
