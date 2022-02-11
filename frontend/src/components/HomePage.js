@@ -6,8 +6,9 @@ import { SocialIcon } from 'react-social-icons';
 function HomePage() {
     const [links, setLinks] = useState(['https://github.com/tinha1207', 'https://www.linkedin.com/in/huy-francis-nguyen-620b7a15a/', 'Link3']);
     return (
-        <VStack bg="brand.900">
-            <Header />
+        <>
+         <Header />
+         <VStack bg="brand.900">
             {links.map(link => {
                 return(
                 <Container centerContent bg="brand.100">
@@ -15,8 +16,11 @@ function HomePage() {
                 </Container>
                 );
             })}
-            <Footer/>
+            
         </VStack>
+         <Footer/>
+        </>
+        
     );
 }
 
